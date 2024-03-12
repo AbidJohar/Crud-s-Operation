@@ -1,0 +1,71 @@
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+<title>Stylish Table</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+  }
+  table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+  }
+  th {
+    background-color: #007bff;
+    color: #fff;
+  }
+  tr:nth-child(even) {
+    background-color: #b6b1b159;
+  }
+  tr:hover {
+    background-color: #ddd;
+  }
+</style>
+</head>
+<body>
+  <% if(users != ""){ %>
+<table>
+  <thead>
+    <tr>
+      <th>S.No</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.forEach((user,index)=>{ %>
+    <tr>
+      <td><%=index+1 %></td>
+      <td><%= user.username %></td>
+      <td><%= user.email %></td>
+      <td><%= user.contact %></td>
+      <td>
+         <a  href="/delete/<%=user._id %>"><i style="font-size: large ; font-weight: 700; color: red; text-decoration: none;" class="ri-delete-bin-line"></i></a>
+         <a href="/edit/<%=user._id %>"><i style="font-size: large ; font-weight: 700; color: blue; padding-left: 20px; text-decoration: none;" class="ri-edit-box-line"></i></a>
+         
+      </td>
+    </tr>
+    
+    <% }); %>
+  </tbody>
+</table>
+<% } %>
+  <a style=" padding: 10px 15px; background-color:#007bff;color: white; font-weight: 600; text-decoration: none; border-radius: 3px; margin-left: 500px;" href="/registor">Add user</a>
+</body>
+</html>
