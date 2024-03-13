@@ -19,14 +19,14 @@ router.get('/delete/:id',async function(req,res){
   );
   //to check user is deleted or not
   console.log("deleted user:"+id)
-  res.redirect("/");
+  res.redirect("/index");
 });
 router.get('/edit/:id',async function(req,res){
   const {id} = req.params;
   const user = await userModel.findById({_id:id});
 
   if(user == null){
-    res.redirect("/");
+    res.redirect("/index");
   }
   else{
     res.render("edit", {user:user})
@@ -41,7 +41,7 @@ const newuser =  new userModel({
   contact: req.body.contact
 });
 await newuser.save();
-res.redirect('/');
+res.redirect('/index');
  
 
 })
@@ -62,7 +62,7 @@ router.post("/update/:id", async function(req, res) {
           { new: true }
       );
       console.log(updateUser._id);
-      res.redirect("/");
+      res.redirect("/index");
  
 });
  
